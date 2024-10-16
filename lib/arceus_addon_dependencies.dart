@@ -4,5 +4,6 @@
 library;
 
 export 'src/files.dart';
+export 'src/values.dart';
 
 // TODO: Export any libraries intended for clients of this package.

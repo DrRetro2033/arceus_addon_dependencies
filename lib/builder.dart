@@ -38,7 +38,10 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
         "Cannot compile without an addon.yaml file in the project folder.");
   }
 
-  if (!files.any((e) => e.path.endsWith('main.dart'))) {
+  if (!files.any((e) {
+    print(e.path);
+    return e.path.endsWith('main.dart');
+  })) {
     throw Exception(
         "Cannot compile without a main.dart file in the project folder with read, write, and isCompatible functions.");
   } else {

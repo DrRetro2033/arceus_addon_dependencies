@@ -27,19 +27,16 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
   Map<String, Map<String, String>> packages = {"project": {}};
   AddOnFingerprint y;
   if (!files.any((e) {
-    print(e.path);
     return e.path.endsWith('addon.yaml');
   })) {
+    YamlMap yaml = YamlMap();
+    for (var file in files) {
+      if (file.path.endsWith('addon.yaml')) {
+        yaml = loadYaml(await buildStep.readAsString(file));
+      }
+    }
     y = AddOnFingerprint.fromYaml(
-      loadYaml(await buildStep.readAsString(files.firstWhere(
-        (e) {
-          print(e.path);
-          if (e.path.endsWith('addon.yaml')) {
-            return true;
-          }
-          return false;
-        },
-      ))),
+      yaml,
     );
     addonName = y.name;
   } else {

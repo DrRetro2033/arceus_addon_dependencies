@@ -59,7 +59,7 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
   }
 
   final addon = compiler.compile(packages); // The compiled code.
-  final outputId = AssetId(buildStep.inputId.package, 'build/$addonName.evc');
+  final outputId = AssetId(buildStep.inputId.path, 'build/$addonName.evc');
   final finalFile = y.fingerprint.codeUnits.toList();
   finalFile.addAll(addon.write().toList());
   await buildStep.writeAsBytes(

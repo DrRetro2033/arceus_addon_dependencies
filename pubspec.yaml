@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   dart_eval: any
+  glob: ^2.1.2
   source_gen: ^1.5.0
   yaml: any
 
@@ -21,4 +22,4 @@ builders:
     import: "package:arceus_addon_dependencies/builder.dart"
     builder_factories: ["AddonBuilder"]
     builders: { r"$lib$": ["*.evc"] }
-    auto_apply: root_package
+    auto_apply: dependents

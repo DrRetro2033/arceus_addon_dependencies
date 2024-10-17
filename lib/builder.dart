@@ -15,7 +15,7 @@ class AddonBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        '.dart': ['.evc']
+        '\$lib\$': ['.evc']
       };
 }
 

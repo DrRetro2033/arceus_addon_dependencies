@@ -32,7 +32,13 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
   })) {
     y = AddOnFingerprint.fromYaml(
       loadYaml(await buildStep.readAsString(files.firstWhere(
-        (e) => e.path.endsWith('addon.yaml'),
+        (e) {
+          print(e.path);
+          if (e.path.endsWith('addon.yaml')) {
+            return true;
+          }
+          return false;
+        },
       ))),
     );
     addonName = y.name;

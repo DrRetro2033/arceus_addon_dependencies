@@ -17,7 +17,7 @@ class AddonBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        '\$lib\$': ['.evc']
+        '../': ['.evc']
       };
 }
 

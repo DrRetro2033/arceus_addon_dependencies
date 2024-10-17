@@ -11,7 +11,8 @@ class AddonBuilder implements Builder {
 
   @override
   Future<void> build(BuildStep buildStep) async {
-    final inputFiles = await buildStep.findAssets(Glob("*.*")).toList();
+    final inputFiles = await buildStep.findAssets(Glob("*.dart")).toList();
+    inputFiles.addAll(await buildStep.findAssets(Glob("*.yaml")).toList());
     print(inputFiles.map((e) => e.path));
     await compile(buildStep, inputFiles);
   }

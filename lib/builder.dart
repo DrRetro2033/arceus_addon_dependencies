@@ -19,7 +19,7 @@ class AddonBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        r'$package$': ['build/output.evc']
+        r'$lib$': ['build/output.evc']
       };
 }
 

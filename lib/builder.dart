@@ -26,7 +26,10 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
   String addonName;
   Map<String, Map<String, String>> packages = {"project": {}};
   AddOnFingerprint y;
-  if (files.any((e) => e.path.endsWith('addon.yaml'))) {
+  if (!files.any((e) {
+    print(e.path);
+    return e.path.endsWith('addon.yaml');
+  })) {
     y = AddOnFingerprint.fromYaml(
       loadYaml(await buildStep.readAsString(files.firstWhere(
         (e) => e.path.endsWith('addon.yaml'),

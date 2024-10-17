@@ -32,7 +32,9 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
     YamlMap yaml = YamlMap();
     for (var file in files) {
       if (file.path.endsWith('addon.yaml')) {
-        yaml = loadYaml(await buildStep.readAsString(file));
+        final content = await buildStep.readAsString(file);
+        print(content);
+        yaml = loadYaml(content) as YamlMap;
       }
     }
     y = AddOnFingerprint.fromYaml(

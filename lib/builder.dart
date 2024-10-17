@@ -12,7 +12,7 @@ class AddonBuilder implements Builder {
   @override
   Future<void> build(BuildStep buildStep) async {
     print(buildStep.inputId.path);
-    final inputFiles = await buildStep.findAssets(Glob("*.*")).toList();
+    final inputFiles = await buildStep.findAssets(Glob("**")).toList();
     print(inputFiles.map((e) => e.path));
     await compile(buildStep, inputFiles);
   }

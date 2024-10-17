@@ -17,7 +17,7 @@ class AddonBuilder implements Builder {
 
   @override
   Map<String, List<String>> get buildExtensions => {
-        r'$lib$': ['output.evc']
+        r'$package$': ['build/output.evc']
       };
 }
 
@@ -61,7 +61,7 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
   final addon = compiler.compile(packages); // The compiled code.
   print(buildStep.inputId.path);
   print(buildStep.inputId.package);
-  final outputId = AssetId(buildStep.inputId.package, 'build/$addonName.evc');
+  final outputId = AssetId(buildStep.inputId.package, 'build/output.evc');
   final finalFile = y.fingerprint.codeUnits.toList();
   finalFile.addAll(addon.write().toList());
   await buildStep.writeAsBytes(

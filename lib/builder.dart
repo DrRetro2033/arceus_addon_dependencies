@@ -12,7 +12,7 @@ class AddonBuilder implements Builder {
   @override
   Future<void> build(BuildStep buildStep) async {
     print(buildStep.inputId.path);
-    final inputFiles = await buildStep.findAssets(Glob("*.dart")).toList();
+    final inputFiles = await buildStep.findAssets(Glob("*.*")).toList();
     print(inputFiles.map((e) => e.path));
     await compile(buildStep, inputFiles);
   }
@@ -49,7 +49,6 @@ Future<void> compile(BuildStep buildStep, List<AssetId> files) async {
   }
 
   if (!files.any((e) {
-    print(e.path);
     return e.path.endsWith('main.dart');
   })) {
     throw Exception(

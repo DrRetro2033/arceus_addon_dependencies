@@ -4,6 +4,8 @@ import 'package:yaml/yaml.dart';
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 
+Builder getAddonBuilder(BuilderOptions options) => AddonBuilder();
+
 class AddonBuilder implements Builder {
   final compiler = Compiler();
 

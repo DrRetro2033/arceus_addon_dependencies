@@ -89,6 +89,7 @@ class u7 extends BitValue {
 }
 
 class ByteValue {
+  dynamic get value => null;
   int address;
   // ignore: unused_field
   late int? size;
@@ -100,6 +101,8 @@ class ByteValue {
 }
 
 class u8 extends ByteValue {
+  @override
+  int get value => _value;
   int _value;
 
   u8(super.address, this._value, {super.size}) {
@@ -114,6 +117,8 @@ class u8 extends ByteValue {
 }
 
 class u16 extends ByteValue {
+  @override
+  int get value => _value;
   int _value;
   u16(super.address, this._value, {super.size}) {
     if (_value & 0xFFFF != _value) {
@@ -132,6 +137,8 @@ class u16 extends ByteValue {
 }
 
 class u32 extends ByteValue {
+  @override
+  int get value => _value;
   int _value;
   u32(super.address, this._value, {super.size}) {
     if (_value & 0xFFFFFFFF != _value) {
@@ -151,6 +158,8 @@ class u32 extends ByteValue {
 }
 
 class u64 extends ByteValue {
+  @override
+  int get value => _value;
   int _value;
   u64(super.address, this._value, {super.size}) {
     if (_value & 0xFFFFFFFFFFFFFFFF != _value) {
@@ -174,6 +183,8 @@ class u64 extends ByteValue {
 }
 
 class str16 extends ByteValue {
+  @override
+  String get value => _value;
   String _value;
   str16(super.address, this._value, {super.size}) {
     if (_value.length > size!) {

@@ -1,7 +1,0 @@
-builders:
-  addon_builder:
-    import: "package:arceus_addon_dependencies/builder.dart"
-    builder_factories: ["getAddonBuilder"]
-    build_to: source
-    build_extensions: { ".dart": ["build/output.evc"] }
-    auto_apply: dependents
